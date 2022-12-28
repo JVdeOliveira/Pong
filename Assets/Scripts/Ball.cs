@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
     public event EventHandler<BallEventArgs> OnMadePoint;
     public class BallEventArgs : EventArgs
     {
-        public Side exitSide;
+        public Side exitBallSide;
     }
 
     private void Awake()
@@ -51,7 +51,9 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Side exitBallSide = UtilClass.GetSide(transform.position.x);
+        OnMadePoint?.Invoke(this, new BallEventArgs { exitBallSide = exitBallSide });
+
         ResetBall();
-        OnMadePoint?.Invoke(this, new BallEventArgs { exitSide = UtilClass.GetSide(transform.position.x) });
     }
 }
