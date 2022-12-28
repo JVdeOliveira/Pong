@@ -45,15 +45,20 @@ public class Bar : MonoBehaviour
         switch (side)
         {
             case Side.Right: verticalInput = Input.GetAxisRaw("VerticalLeft"); break;
-            case Side.Left:  verticalInput = Input.GetAxisRaw("VerticalRight"); break;
+            case Side.Left: verticalInput = Input.GetAxisRaw("VerticalRight"); break;
         }
 
-        transform.position += Time.deltaTime * verticalInput * SPEED * Vector3.up;
+        Move(verticalInput);
     }
 
     private void MachineMove()
     {
 
+    }
+
+    private void Move(float verticalDirection)
+    {
+        transform.position += Time.deltaTime * verticalDirection * SPEED * Vector3.up;
     }
 
     private void ClampPosition()
