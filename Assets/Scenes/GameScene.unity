@@ -340,7 +340,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 0
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -791,7 +791,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 0
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -1416,6 +1416,10 @@ PrefabInstance:
     - target: {fileID: 2909907776875716374, guid: 207b473e092f59d4e962991cf4d7be61, type: 3}
       propertyPath: m_Name
       value: Bar Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909907776875716376, guid: 207b473e092f59d4e962991cf4d7be61, type: 3}
+      propertyPath: playerType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2909907776875716377, guid: 207b473e092f59d4e962991cf4d7be61, type: 3}
       propertyPath: m_RootOrder
