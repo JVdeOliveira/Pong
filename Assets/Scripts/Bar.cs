@@ -9,22 +9,18 @@ public class Bar : MonoBehaviour
         Player,
         Machine
     }
-    public enum Side
-    {
-        Right,
-        Left
-    }
 
     private const float MAX_Y_POSITION = 4f;
-    private const float SPEED = 5f;
 
     [SerializeField] 
     private Type playerType;
     private Side side;
 
+    private readonly float speed = 5f;
+
     private void Awake()
     {
-        SetSide();
+        side = UtilClass.GetSide(transform.position.x);
     }
 
     private void Update()
@@ -58,7 +54,7 @@ public class Bar : MonoBehaviour
 
     private void Move(float verticalDirection)
     {
-        transform.position += Time.deltaTime * verticalDirection * SPEED * Vector3.up;
+        transform.position += Time.deltaTime * verticalDirection * speed * Vector3.up;
     }
 
     private void ClampPosition()
@@ -66,12 +62,5 @@ public class Bar : MonoBehaviour
         Vector3 position = transform.position;
         position.y = Mathf.Clamp(position.y, -MAX_Y_POSITION, MAX_Y_POSITION);
         transform.position = position;
-    }
-
-    private void SetSide()
-    {
-        bool isRight = transform.position.x > 0;
-
-        side = isRight ? Side.Right : Side.Left;
     }
 }
