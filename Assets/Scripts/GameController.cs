@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private Ball ball;
+    public static GameController Instance { get; private set; }
 
+    [SerializeField] 
+    private Ball ball;
     private int[] playerScoreArray;
 
     public event EventHandler<ScoredChandedEventArgs> OnScoredChanded;
@@ -24,7 +26,8 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        playerScoreArray= new int[2];
+        Instance = this;
+        playerScoreArray = new int[2];
 
         ball.OnMadePoint += Ball_OnMadePoint;
     }

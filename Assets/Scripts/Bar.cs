@@ -17,10 +17,12 @@ public class Bar : MonoBehaviour
     private Side side;
 
     private readonly float speed = 5f;
+    Transform ball;
 
     private void Awake()
     {
         side = UtilClass.GetSide(transform.position.x);
+        ball = FindObjectOfType<Ball>().transform;
     }
 
     private void Update()
@@ -49,7 +51,9 @@ public class Bar : MonoBehaviour
 
     private void MachineMove()
     {
+        float targetYDirection = ball.position.y - transform.position.y;
 
+        Move(targetYDirection);
     }
 
     private void Move(float verticalDirection)
