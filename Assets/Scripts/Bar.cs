@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bar : MonoBehaviour
@@ -12,16 +10,16 @@ public class Bar : MonoBehaviour
 
     private const float MAX_Y_POSITION = 4f;
 
-    [SerializeField] 
+    [SerializeField]
     private Type playerType;
     private Side side;
 
     private readonly float speed = 5f;
-    Transform ball;
+    private Transform ball;
 
     private void Awake()
     {
-        side = UtilClass.GetSide(transform.position.x);
+        side = SideSystem.GetSide(transform.position.x);
         ball = FindObjectOfType<Ball>().transform;
     }
 
@@ -42,8 +40,8 @@ public class Bar : MonoBehaviour
 
         switch (side)
         {
-            case Side.Right: verticalInput = Input.GetAxisRaw("VerticalLeft"); break;
-            case Side.Left: verticalInput = Input.GetAxisRaw("VerticalRight"); break;
+            case Side.Right: verticalInput = Input.GetAxisRaw("VerticalRight"); break;
+            case Side.Left: verticalInput = Input.GetAxisRaw("VerticalLeft"); break;
         }
 
         Move(verticalInput);
