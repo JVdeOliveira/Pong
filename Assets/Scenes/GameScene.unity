@@ -1518,8 +1518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639bd1671d8d524ebbf2b17e6150034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TMP_Player1: {fileID: 1150575214}
-  TMP_Player2: {fileID: 141544612}
+  textScorePlayer1: {fileID: 1150575214}
+  textScorePlayer2: {fileID: 141544612}
 --- !u!1 &2090074167
 GameObject:
   m_ObjectHideFlags: 0
