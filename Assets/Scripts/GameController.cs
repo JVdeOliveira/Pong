@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -11,13 +10,13 @@ public class GameController : MonoBehaviour
     private Ball ball;
     private int[] playerScoreArray;
 
-    public event EventHandler<ScoredChandedEventArgs> OnScoredChanded;
-    public class ScoredChandedEventArgs : EventArgs
+    public event EventHandler<ScoredChangedEventArgs> ScoredChanged;
+    public class ScoredChangedEventArgs : EventArgs
     {
         public Side sideThatScored;
         public int score;
 
-        public ScoredChandedEventArgs(Side sideThatScored, int score)
+        public ScoredChangedEventArgs(Side sideThatScored, int score)
         {
             this.sideThatScored = sideThatScored;
             this.score = score;
@@ -26,13 +25,19 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
+
         playerScoreArray = new int[2];
 
-        ball.OnMadePoint += Ball_OnMadePoint;
+        ball.MadePoint += Ball_MadePoint;
     }
 
-    private void Ball_OnMadePoint(object sender, Ball.BallEventArgs e)
+    private void Ball_MadePoint(object sender, Ball.BallEventArgs e)
     {
         Side sideThatScored;
 
@@ -53,6 +58,6 @@ public class GameController : MonoBehaviour
         int playerPointIndex = (int)sideThatScored;
 
         playerScoreArray[playerPointIndex]++;
-        OnScoredChanded?.Invoke(this, new ScoredChandedEventArgs(sideThatScored, playerScoreArray[playerPointIndex]));
+        ScoredChanged?.Invoke(this, new ScoredChangedEventArgs(sideThatScored, playerScoreArray[playerPointIndex]));
     }
 }
