@@ -1,6 +1,5 @@
 ﻿
-
-public static class UtilClass
+public class SideSystem
 {
     public static Side GetSide(float xPosition)
     {
@@ -8,10 +7,3 @@ public static class UtilClass
         return isRight ? Side.Right : Side.Left;
     }
 }
-
-public enum Side
-{
-    Left,
-    Right
-}
-
